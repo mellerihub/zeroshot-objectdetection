@@ -3,16 +3,16 @@
 
 **Installation:**
 
-1.Clone the GroundingDINO repository from GitHub.
+1.Clone the ALO repository from GitHub.
 
 ```bash
-git clone https://github.com/IDEA-Research/GroundingDINO.git
+git clone https://github.com/mellerikat/alo.git zeroshot_od
 ```
 
-2. Change the current directory to the GroundingDINO folder.
+2. Clone the zeroshot-objectdetection solution repository from GitHub.
 
 ```bash
-cd GroundingDINO/
+git clone https://github.com/mellerikat/alo.git zeroshot_od
 ```
 
 3. Install the required dependencies in the current directory.
