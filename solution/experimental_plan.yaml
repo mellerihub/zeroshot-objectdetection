@@ -1,0 +1,109 @@
+name: prompt_detector
+external_path:
+    - load_train_data_path:
+    - load_inference_data_path: 'solution/sample_data/inference'
+    - save_train_artifacts_path:
+    - save_inference_artifacts_path:
+    - load_model_path: 
+
+version: 1.0.0
+
+external_path_permission:
+    - aws_key_profile:
+ 
+user_parameters:
+    - inference_pipeline:
+      - step: input 
+        args: 
+          - input_mode: files
+      
+      - step: inference
+        args:
+          - text_prompt: face
+            box_threshold: 0.4
+            text_threshold: 0.3
+            nms_threshold: None
+            postprocess: True
+            device: cuda
+            sod: True
+
+        ui_args: 
+          - text_prompt
+          - box_threshold
+          - text_threshold
+          - device
+
+
+      - step: output
+        args:
+
+asset_source:
+    - inference_pipeline:
+      - step: input
+        source: 
+          code: local
+          branch:
+          requirements:
+            - pandas==2.2.2
+
+      - step: inference 
+        source: 
+          code: local
+          branch: 
+          requirements: 
+            - requirements.txt
+
+      - step: output 
+        source: 
+          code: local
+          branch: 
+          requirements:
+
+
+
+ui_args_detail:
+    - inference_pipeline:
+        - step: inference 
+          args:
+              - name: text_prompt
+                description: Please write the target to be detected in text
+                type: string
+                default: "face"
+                range:
+                  - 1
+                  - 1000000
+                  
+              - name: box_threshold
+                description: object detection threshold
+                type: float
+                default: 0.1
+                range:
+                  - 0.0
+                  - 1.0
+                  
+              - name: text_threshold
+                description: text_threshold
+                type: float
+                default: 0.3
+                range:
+                  - 0.0
+                  - 1.0
+                  
+              - name: device
+                description: 추론 자원 선택
+                type: single_selection
+                default: cpu
+                selectable:
+                  - cpu
+                  - cuda
+
+
+control:
+    - get_asset_source: once ## once, every
+    - backup_artifacts: False
+    - backup_log: True
+    - backup_size: 1000
+    - interface_mode: memory
+    - save_inference_format: tar.gz 
+    - check_resource: False 
+  
