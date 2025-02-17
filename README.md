@@ -40,3 +40,10 @@ cd assets
 cd inference
 pip install -e .
 ```
+
+<br>
+5. Local Demo start
+
+```bash
+python main.py
+```
