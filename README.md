@@ -8,7 +8,7 @@ Basic Dependencies:
 * CUDA Version >= 11.7
 <br>
 
-** Installation:**
+**Installation:**
 
 <br>
 1.Clone the ALO repository from GitHub.
