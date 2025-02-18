@@ -4,8 +4,6 @@
 Basic Dependencies:
 
 * Python == 3.10
-* Pytorch >= 2.1.0
-* CUDA Version >= 11.7
 <br>
 
 **Installation:**
