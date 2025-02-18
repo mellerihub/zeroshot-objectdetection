@@ -1,8 +1,13 @@
 
-## :hammer_and_wrench: Install 
+## :hammer_and_wrench:  Requirements and Install 
 
+Basic Dependencies:
 
-**Installation:**
+Python == 3.10
+Pytorch >= 2.1.0
+CUDA Version >= 11.7
+
+** Installation:**
 
 <br>
 1.Clone the ALO repository from GitHub.
