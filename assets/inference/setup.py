@@ -12,24 +12,27 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# ------------------------------------------------------------------------------------------------
-# Modified from
-# https://github.com/fundamentalvision/Deformable-DETR/blob/main/models/ops/setup.py
-# https://github.com/facebookresearch/detectron2/blob/main/setup.py
-# https://github.com/open-mmlab/mmdetection/blob/master/setup.py
-# https://github.com/Oneflow-Inc/libai/blob/main/setup.py
-# ------------------------------------------------------------------------------------------------
+
 
 import glob
 import os
 import subprocess
 
+import subprocess
 import sys
+
+print(sys.executable)
 
 import torch
 from setuptools import find_packages, setup
 from torch.utils.cpp_extension import CUDA_HOME, CppExtension, CUDAExtension
+# groundingdino version info
+version = "0.1.0"
+package_name = "groundingdino"
+cwd = os.path.dirname(os.path.abspath(__file__))
 
+
+sha = "Unknown"
 
 
 
@@ -84,12 +87,12 @@ def get_extensions():
 
 
 
-
-
 if __name__ == "__main__":
 
 
     setup(
+        name=package_name,
+        version=version,
         ext_modules=get_extensions(),
         cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension},
     )
