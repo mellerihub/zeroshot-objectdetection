@@ -4,6 +4,7 @@
 Basic Dependencies:
 
 * Python == 3.10
+* cuda 12.1
 <br>
 
 **Installation:**
