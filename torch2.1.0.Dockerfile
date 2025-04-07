@@ -23,8 +23,9 @@ RUN apt-get update && apt-get install -y \
     && rm get-pip.py \
     && rm -rf /var/lib/apt/lists/*
 
-ENV LD_LIBRARY_PATH /usr/local/cuda-12.1/lib64:$LD_LIBRARY_PATH
+
 ENV CUDA_HOME /usr/local/cuda-12.1
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
  
 # Specify encoding
 ENV LC_ALL=C.UTF-8
@@ -45,4 +46,10 @@ RUN pip3 install --no-cache-dir -r alolib/requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 site_packages_location
  
+
+WORKDIR /framework/assets/inference/
+RUN pip3 install -e .
+
+WORKDIR /framework
+
 CMD ["python3.10", "main.py"]
